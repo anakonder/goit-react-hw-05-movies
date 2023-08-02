@@ -3,11 +3,13 @@ import {  useEffect } from "react";
 import HomePage from "../pages/HomePage"
 import MoviePage from "pages/MoviesPage";
 
-import {getMoves} from "../services/API"
-export const App = () => {
+import {getMovies} from "../services/API"
+const App = () => {
 
   useEffect(() => {
-    getMoves()
+    const query = ""
+    const base = "3/trending/all/day"
+    getMovies(base, query)
   }, [])
   
   return (
@@ -28,3 +30,5 @@ export const App = () => {
     </div>
   );
 };
+
+export default App;
