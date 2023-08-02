@@ -21,6 +21,7 @@ export const getMovies = async (base, query) => {
             console.log("Пішов запит на колекцію популярних фільмів")
             const response = await api.get(base);
             console.log(response.data)
+            console.log(response)
         }
 
     } catch (error) {
