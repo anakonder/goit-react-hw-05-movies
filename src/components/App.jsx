@@ -1,17 +1,11 @@
 import { Routes, Route, NavLink } from "react-router-dom";
-import {  useEffect } from "react";
 import HomePage from "../pages/HomePage"
 import MoviePage from "pages/MoviesPage";
+import MovieDetailsPage from "pages/MovieDetailsPage";
 
-import {getMovies} from "../services/API"
+
 const App = () => {
 
-  useEffect(() => {
-    const query = ""
-    const base = "3/trending/all/day"
-    getMovies(base, query)
-  }, [])
-  
   return (
     <div>
       <ul>
@@ -23,9 +17,9 @@ const App = () => {
         </li>
       </ul>
       <Routes>
-        <Route path="/" element={<div><HomePage/></div>}/>
+        <Route index element={<div><HomePage /></div>} />
         <Route path="/movies" element={<div><MoviePage/></div>}/>
-        <Route path="/movies/:movieId" element={<div>MovieDetails</div>}/>
+        <Route path="/movies/:movieId" element={<div><MovieDetailsPage/></div>}/>
       </Routes>
     </div>
   );

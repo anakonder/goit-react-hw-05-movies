@@ -2,16 +2,17 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getMovies } from "../services/API"
 
-const HomePage = () => {
-    const [movies, setMovies] = useState([])
+const Home = () => {
+  const [movies, setMovies] = useState([])
   
   useEffect(() => {
     const fetchMovies = async () => {
+      const query = ""
       const base = "3/trending/all/day"
-      const result = await getMovies(base, "")
-    //   console.log(result, "результат запиту на колекцію")
+      const result = await getMovies(base, query)
+      console.log(result, "результат запиту на колекцію")
       if (result) {
-        setMovies(result); 
+        setMovies(result); // Зберігаємо дані про фільми у стейт
       }
     }
 
@@ -24,8 +25,8 @@ const HomePage = () => {
       <ul>
           {movies.map(movie => {
             return (   
-              <li key={movie.id}>
-                <Link  to={`/movies/${movie.id}`}>{movie.title || movie.name} - {movie.id}</Link> 
+              <li>
+                <Link key={movie.id} to={`/movies/${movie.id}`}>{movie.title || movie.name}{movie.id}</Link> 
               </li>
               )
           })}
@@ -36,5 +37,4 @@ const HomePage = () => {
     
 }
 
-
-export default HomePage;
+export default Home

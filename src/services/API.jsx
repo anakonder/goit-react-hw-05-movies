@@ -14,14 +14,18 @@ const api = axios.create({
 export const getMovies = async (base, query) => {
     try {
         if(query) {
-            console.log("Пішов запит за словом")
-            
+            // console.log("Пішов запит за словом", query)
+            const response = await api.get(`3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`);
+            // console.log(response.data)
+            // console.log(response)
+            return response.data.results
         }
         if(base) {
-            console.log("Пішов запит на колекцію популярних фільмів")
+            // console.log("Пішов запит на колекцію популярних фільмів")
             const response = await api.get(base);
-            console.log(response.data)
-            console.log(response)
+            // console.log(response.data)
+            // console.log(response)
+            return response.data.results
         }
 
     } catch (error) {
