@@ -11,7 +11,6 @@ export const Cast = () => {
         const fetchCast = async () => {
             const flag = "credits"
             const result = await getMovies("", "", movieId, flag)
-            console.log(result, "перевірка результату запиту на акторів"); // Потрібно видалити 
             if (result && result.data && result.data.cast) {
                 setCast(result.data.cast);
             }

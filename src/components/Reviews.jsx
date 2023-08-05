@@ -13,13 +13,24 @@ export const Reviews = () => {
             const result = await getMovies("", "", movieId, flag)
             console.log(result, "перевірка результату запиту на reviews"); // Потрібно видалити 
             if (result && result.data && result.data.results.length) {
-                setReviews(result.data.results[0].content);
+                setReviews(result.data.results);
             }            
         }
         
         fetchReviews()
     }, [movieId])
     return (
-        <div>{reviews}</div>
+        <div>
+            <ul>
+                {reviews &&
+                    reviews.map(review => 
+                        <li>
+                            <h3>{review.author}</h3>
+                            <p>{review.content}</p>
+                        </li>
+                )    
+                }
+            </ul>
+        </div>
 )
 }

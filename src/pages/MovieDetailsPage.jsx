@@ -4,15 +4,14 @@ import { getMovies } from "../services/API"
 import Styles from "./MovieDetailsPage.module.css"
 
 const MovieDetailsPage = () => {
-    const [movie, setMovie] = useState({})
-    // const [movieImages, setMovieImages] = useState({});
+    const [movie, setMovie] = useState({})    
     const {movieId} = useParams()    
 
     useEffect(() => {
         const fetchMovie = async () => {
             const {movieData} = await getMovies("", "", movieId)
             setMovie(movieData);
-            // setMovieImages(movieImages);
+            
         }
         
         fetchMovie()
