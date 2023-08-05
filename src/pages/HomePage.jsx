@@ -8,8 +8,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       const base = "3/trending/all/day"
-      const result = await getMovies(base, "")
-    //   console.log(result, "результат запиту на колекцію")
+      const result = await getMovies(base, "")    
       if (result) {
         setMovies(result); 
       }

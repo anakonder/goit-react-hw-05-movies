@@ -11,21 +11,28 @@ const api = axios.create({
 
 })
 
-export const getMovies = async (base, query) => {
+export const getMovies = async (base, query, movieId, flag) => {
     try {
-        if(query) {
-            // console.log("Пішов запит за словом", query)
+        if(query) {           
             const response = await api.get(`3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`);
-            // console.log(response.data)
-            // console.log(response)
             return response.data.results
         }
-        if(base) {
-            // console.log("Пішов запит на колекцію популярних фільмів")
-            const response = await api.get(base);
-            // console.log(response.data)
-            // console.log(response)
+        if(base) {            
+            const response = await api.get(base);           
             return response.data.results
+        }
+        if(movieId && !flag) {
+            const response = await api.get(`3/movie/${movieId}`)
+            
+            return {
+                movieData: response.data,                
+            };
+        }
+        if (movieId && flag) {
+            console.log(movieId, flag, "передано для запиту");
+            const response = await api.get(`3/movie/${movieId}/${flag}`)
+            console.log(response, "відповідь на запит");
+            return response
         }
 
     } catch (error) {
@@ -33,3 +40,4 @@ export const getMovies = async (base, query) => {
         return null
     } 
 }
+
