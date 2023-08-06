@@ -13,6 +13,7 @@ const api = axios.create({
 
 export const getMovies = async (base, query, movieId, flag) => {
     try {
+        
         if(query) {           
             const response = await api.get(`3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`);
             return response.data.results

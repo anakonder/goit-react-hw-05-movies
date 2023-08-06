@@ -12,3 +12,18 @@
   border-bottom: 3px solid rgb(196, 195, 195);
   box-shadow: 0px 2px rgb(243, 240, 240);
 }
+
+.navLink {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+}
+
+.navLink:hover,
+.navLink:focus {
+  color: gray;
+}
+
+.navLink:active {
+  color: rgb(230, 87, 87);
+}
