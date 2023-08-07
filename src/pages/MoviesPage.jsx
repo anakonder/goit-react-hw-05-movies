@@ -1,13 +1,15 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { getMovies } from "services/API";
 import { Oval } from  'react-loader-spinner'
 
 
 const MoviePage = () => {
     const [query, setQuery] = useState("");
-    const [movies, setMovies] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+    const [movies, setMovies] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleInputChange = (event) => {
         setQuery(event.target.value);
@@ -19,12 +21,14 @@ const MoviePage = () => {
       const result = await getMovies("", query); 
       setMovies(result); 
       setQuery("")
+      navigate(`/movies?query=${query}`);
+      setIsLoading(false) 
     } catch (error) {
       console.error("Error fetching movies:", error);
       setMovies([]);
     }
-    setIsLoading(false) 
-  };
+    };
+    
 
     return (
         <div>
@@ -42,8 +46,8 @@ const MoviePage = () => {
                     (<ul>
                         {movies.map((movie) => (
                             <li key={movie.id}>
-                                <Link to={`${movie.id}`}>
-                                    {movie.title || movie.name} - {movie.id}
+                                <Link to={`${location.pathname}/${movie.id}`}>
+                                    {movie.title || movie.name} 
                                 </Link>
                             </li>
                         ))}
@@ -67,11 +71,6 @@ const MoviePage = () => {
             )}
       
         </div>)
-}        
-        
-                
-  
-  
-
+}   
 
 export default MoviePage;

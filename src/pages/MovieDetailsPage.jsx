@@ -24,8 +24,9 @@ const MovieDetailsPage = () => {
 
     return (
       <div>
+        <Link to="/movies"><button type="button">go back</button></Link>
         <div className={Styles.infoWrap}>
-          {poster_path &&  (
+          {poster_path ? (
             <img
               className={Styles.poster}            
               src={`https://image.tmdb.org/t/p/w185/${poster_path}`}
@@ -33,6 +34,14 @@ const MovieDetailsPage = () => {
               width="200"
               height="auto"
             />
+            ) : (
+            <img
+              className={Styles.poster}            
+              src={`https://th.bing.com/th/id/R.6486b7c738f4ee5dd3d0f74debbcf58b?rik=Ai9QxajK3PUhkg&pid=ImgRaw&r=0`}
+              alt="Movie backdrop"
+              width="200"
+              height="auto"
+            />              
             )}
           <div className={Styles.textWrap}>
             <h2 className={Styles.title}>{title}</h2>
