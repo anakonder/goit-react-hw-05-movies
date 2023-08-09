@@ -1,34 +1,39 @@
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { useState, } from "react";
 import { getMovies } from "services/API";
 import { Oval } from  'react-loader-spinner'
-
 
 const MoviePage = () => {
     const [query, setQuery] = useState("");
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const navigate = useNavigate();
-    const location = useLocation();
-
+    const [searchParams, setSearchParams]=useSearchParams()
+    
     const handleInputChange = (event) => {
         setQuery(event.target.value);
     };
+    
 
     const handleSubmit = async (event) => {
     event.preventDefault();
+    
+    
+    
     try {
-      const result = await getMovies("", query); 
+      const result = await getMovies("", query);
       setMovies(result); 
+      setSearchParams((prevSearchParams) => ({
+          ...prevSearchParams,
+          query: query,
+      }));  
+      console.log("серчПарамс", searchParams.get("query"))   
       setQuery("")
-      navigate(`/movies?query=${query}`);
       setIsLoading(false) 
     } catch (error) {
       console.error("Error fetching movies:", error);
       setMovies([]);
     }
-    };
-    
+    };    
 
     return (
         <div>
@@ -46,7 +51,7 @@ const MoviePage = () => {
                     (<ul>
                         {movies.map((movie) => (
                             <li key={movie.id}>
-                                <Link to={`${location.pathname}/${movie.id}`}>
+                                <Link to={`${movie.id}`} state={{ query }}>
                                     {movie.title || movie.name} 
                                 </Link>
                             </li>

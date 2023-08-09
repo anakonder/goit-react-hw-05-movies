@@ -1,11 +1,18 @@
 import { useState, useEffect} from "react"
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useParams, useLocation, } from "react-router-dom";
 import { getMovies } from "../services/API"
 import Styles from "./MovieDetailsPage.module.css"
+
+
+
 
 const MovieDetailsPage = () => {
     const [movie, setMovie] = useState({})    
     const {movieId} = useParams()    
+    const location = useLocation();
+    console.log(movieId)
+    console.log("це адреса для повернення", location.state)
+    const backLink = location.state?.from ?? '/';
 
     useEffect(() => {
         const fetchMovie = async () => {
@@ -24,7 +31,9 @@ const MovieDetailsPage = () => {
 
     return (
       <div>
-        <Link to="/movies"><button type="button">go back</button></Link>
+        <Link to={backLink}>
+                <button type="button">Go Back</button>
+        </Link>
         <div className={Styles.infoWrap}>
           {poster_path ? (
             <img
