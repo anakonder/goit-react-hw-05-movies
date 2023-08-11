@@ -22,11 +22,11 @@ export const Cast = () => {
     
     return (
         <div>
-    {cast ? (
-        <div>
-            <h2>Cast:</h2>
-            <ul>
-                {cast.map(actor => (
+                {cast ? (
+            <div>
+                <p>Cast:</p>
+                <ul>
+                    {cast.map(actor => (
                     <li key={actor.id}>
                         {actor.profile_path && (
                             <img
@@ -52,11 +52,12 @@ export const Cast = () => {
                         <p>{actor.name}</p>
                     </li>
                 ))}
-            </ul>
+                </ul>
+                
+            </div>   
+                ): (
+                    <p>wwwweqweee</p>    
+                )}
         </div>
-    ) : (
-        <p>We don't have any cast for this movie</p>
-    )}
-</div>
 )
 }

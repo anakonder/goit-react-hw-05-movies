@@ -12,11 +12,13 @@ const MoviePage = () => {
 
   useEffect(() => {
     const queryFromUrl = searchParams.get("query");
+    console.log("queryFromUrl", queryFromUrl)
     if (queryFromUrl) {
       setQuery(queryFromUrl);
       fetchMovies(queryFromUrl);
     }
-  }, [searchParams]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]); 
 
   const fetchMovies = async (searchQuery) => {
     try {
