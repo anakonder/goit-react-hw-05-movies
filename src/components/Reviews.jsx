@@ -10,8 +10,7 @@ export const Reviews = () => {
     useEffect(() => {
         const fetchReviews = async () => {
             const flag = "reviews"
-            const result = await getMovies("", "", movieId, flag)
-            console.log(result, "перевірка результату запиту на reviews"); // Потрібно видалити 
+            const result = await getMovies("", "", movieId, flag)            
             if (result && result.data && result.data.results.length) {
                 setReviews(result.data.results);
             }            
