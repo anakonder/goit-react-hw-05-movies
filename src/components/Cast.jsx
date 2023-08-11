@@ -21,33 +21,42 @@ export const Cast = () => {
     }, [movieId])
     
     return (
-     <div>
+        <div>
+    {cast ? (
+        <div>
             <h2>Cast:</h2>
             <ul>
                 {cast.map(actor => (
                     <li key={actor.id}>
-                        {actor.profile_path ? (                        
-                        <img                        
-                            src={`https://image.tmdb.org/t/p/w185/${actor.profile_path}`}
-                            alt="actor icon"
-                            object-fit= "cover"
-                            width="50"
-                            height="70"
-                        />
-                        ) : (
-                        <img
-                            src={`https://3.bp.blogspot.com/_uPjaUtd_i5Y/SxBf1Vc7EWI/AAAAAAAAAI8/fa4SF8JGWaw/s1600/mr-x-238x300.png`}
-                            alt="actor icon"
-                            
-                            width="50"
-                            height="70"
-                        />
-
+                        {actor.profile_path && (
+                            <img
+                                src={`https://image.tmdb.org/t/p/w185/${actor.profile_path}`}
+                                alt="actor icon"
+                                style={{
+                                    width: "50px",
+                                    height: "70px",
+                                    objectFit: "cover",
+                                }}
+                            />
+                        )}
+                        {!actor.profile_path && (
+                            <img
+                                src={`https://3.bp.blogspot.com/_uPjaUtd_i5Y/SxBf1Vc7EWI/AAAAAAAAAI8/fa4SF8JGWaw/s1600/mr-x-238x300.png`}
+                                alt="actor icon"
+                                style={{
+                                    width: "50px",
+                                    height: "70px",
+                                }}
+                            />
                         )}
                         <p>{actor.name}</p>
                     </li>
                 ))}
             </ul>
         </div>
+    ) : (
+        <p>We don't have any cast for this movie</p>
+    )}
+</div>
 )
 }

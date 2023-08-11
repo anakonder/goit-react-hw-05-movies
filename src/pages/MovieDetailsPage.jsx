@@ -17,8 +17,7 @@ const MovieDetailsPage = () => {
     useEffect(() => {
         const fetchMovie = async () => {
             const {movieData} = await getMovies("", "", movieId)
-            setMovie(movieData);
-            
+            setMovie(movieData);            
         }
         
         fetchMovie()
