@@ -9,9 +9,7 @@ import Styles from "./MovieDetailsPage.module.css"
 const MovieDetailsPage = () => {
     const [movie, setMovie] = useState({})    
     const {movieId} = useParams()    
-    const location = useLocation();
-    console.log(movieId)
-    console.log("це адреса для повернення", location.state)
+    const location = useLocation();      
     const backLink = location.state?.from ?? '/';
 
     useEffect(() => {
@@ -26,8 +24,7 @@ const MovieDetailsPage = () => {
     
     const { title, poster_path, overview, vote_average, genres } = movie || {}
     const userScore = Math.round(vote_average * 10)
-    console.log(movie)
-
+  
     return (
       <div>
         <Link to={backLink}>

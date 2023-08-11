@@ -12,7 +12,6 @@ const MoviePage = () => {
 
   useEffect(() => {
     const queryFromUrl = searchParams.get("query");
-    console.log("queryFromUrl", queryFromUrl)
     if (queryFromUrl) {
       setQuery(queryFromUrl);
       fetchMovies(queryFromUrl);

@@ -29,10 +29,8 @@ export const getMovies = async (base, query, movieId, flag) => {
                 movieData: response.data,                
             };
         }
-        if (movieId && flag) {
-            console.log(movieId, flag, "передано для запиту");
-            const response = await api.get(`3/movie/${movieId}/${flag}`)
-            console.log(response, "відповідь на запит");
+        if (movieId && flag) {            
+            const response = await api.get(`3/movie/${movieId}/${flag}`)            
             return response
         }
 
