@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getMovies } from "../services/API"
+import { getMovies } from "../../services/API"
 
 export const Reviews = () => {
     const [reviews, setReviews] = useState("")

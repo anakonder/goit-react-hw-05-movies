@@ -1,5 +1,6 @@
-import { Link, useSearchParams, useLocation } from "react-router-dom";
+import {  useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { MoviesList } from "components/MoviesList/MoviesList";
 import { getMovies } from "services/API";
 import { Oval } from "react-loader-spinner";
 
@@ -8,8 +9,7 @@ const MoviePage = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
-
+  
   useEffect(() => {
     const queryFromUrl = searchParams.get("query");
     if (queryFromUrl) {
@@ -53,15 +53,9 @@ const MoviePage = () => {
             {movies.length > 0 && (
                 <div>
                     {!isLoading ?
-                    (<ul>
-                        {movies.map((movie) => (
-                            <li key={movie.id}>
-                                <Link to={`${movie.id}`} state={{ from: location }}>
-                                    {movie.title || movie.name}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>) : (
+                    (
+              <MoviesList movies={movies} />
+                    ) : (
                       <Oval
                         height={20}
                         width={20}

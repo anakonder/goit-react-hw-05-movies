@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { MoviesList } from "components/MoviesList/MoviesList";
 import { getMovies } from "../services/API"
 import { Oval } from  'react-loader-spinner'
 
@@ -25,15 +25,7 @@ const HomePage = () => {
   return (
     <div>
       {!isLoading ?
-        (<ul>
-          {movies.map(movie => {
-            return (
-              <li key={movie.id}>
-                <Link to={`/movies/${movie.id}`}>{movie.title || movie.name}</Link>
-              </li>
-            )
-          })}
-        </ul>) : (
+        (<MoviesList movies={movies} />) : (
           <Oval
             height={20}
             width={20}

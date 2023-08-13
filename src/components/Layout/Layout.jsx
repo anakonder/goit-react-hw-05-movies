@@ -1,7 +1,9 @@
 import { NavLink, Outlet } from "react-router-dom";
+import { Suspense } from "react";
 import Styles from "./Layaut.module.css"
 import styled from "styled-components";
-export const Layout = () => {
+
+const Layout = () => {
 
 const StyledLink = styled(NavLink)`
   color: black;
@@ -20,7 +22,12 @@ const StyledLink = styled(NavLink)`
                   <StyledLink className={Styles.navLink} to="/movies" >Movies</StyledLink>
                 </li>
             </ul>
-            <Outlet/>
+            <Suspense fallback={<div>Loading page...</div>}>
+              <Outlet />
+            </Suspense>
         </div>
     )
 }
+
+
+export default Layout;

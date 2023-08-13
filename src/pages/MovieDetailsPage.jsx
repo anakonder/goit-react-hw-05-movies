@@ -1,6 +1,7 @@
-import { useState, useEffect} from "react"
+import { useState, useEffect, Suspense} from "react"
 import { Link, Outlet, useParams, useLocation, } from "react-router-dom";
 import { getMovies } from "../services/API"
+import MovieDetails from "components/MovieDetails/MovieDetails";
 import Styles from "./MovieDetailsPage.module.css"
 
 
@@ -11,6 +12,7 @@ const MovieDetailsPage = () => {
     const {movieId} = useParams()    
     const location = useLocation();      
     const backLink = location.state?.from ?? '/';
+    const camefrom = location?.state?.from ?? '/';
 
     useEffect(() => {
         const fetchMovie = async () => {
@@ -28,7 +30,7 @@ const MovieDetailsPage = () => {
     return (
       <div>
         <Link to={backLink}>
-                <button type="button">Go Back</button>
+                Go Back
         </Link>
         <div className={Styles.infoWrap}>
           {poster_path ? (
@@ -61,20 +63,30 @@ const MovieDetailsPage = () => {
             </ul>
           </div>
         </div>
-        <div className={Styles.detailsWrap}>
-            <p>Additional information</p>
-            <ul className={Styles.detailsLinks}>
-                <li>
-                  <Link to={"cast"}>Cast</Link>
-                </li>
-                <li>
-                  <Link to={"reviews"}>Reviews</Link>
-                </li>
-            </ul>
-        </div>
-        <Outlet/>
+        <MovieDetails camefrom={camefrom} />        
+        <Suspense fallback={<div>Loading subpage...</div>}>
+                <Outlet />
+        </Suspense>
       </div>
     );
 }
 
 export default MovieDetailsPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

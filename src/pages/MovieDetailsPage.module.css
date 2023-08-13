@@ -6,12 +6,6 @@ p {
   padding: 0;
 }
 
-.detailsWrap {
-  padding: 20px;
-  border-top: 2px solid gray;
-  border-bottom: 2px solid gray;
-}
-
 .infoWrap {
   margin-bottom: 20px;
   display: flex;
