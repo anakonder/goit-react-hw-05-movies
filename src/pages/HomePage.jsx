@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MoviesList } from "components/MoviesList/MoviesList";
+import MoviesList from "../components/MoviesList/MoviesList";
 import { getMovies } from "../services/API"
 import { Oval } from  'react-loader-spinner'
 
@@ -14,7 +14,7 @@ const HomePage = () => {
       const result = await getMovies(base, "")    
       if (result) {
         setMovies(result); 
-        setIsLoading(false)
+        setIsLoading(false)        
       }
     }
 
@@ -25,7 +25,9 @@ const HomePage = () => {
   return (
     <div>
       {!isLoading ?
-        (<MoviesList movies={movies} />) : (
+        (
+          <MoviesList movies={movies} />
+        ) : (
           <Oval
             height={20}
             width={20}

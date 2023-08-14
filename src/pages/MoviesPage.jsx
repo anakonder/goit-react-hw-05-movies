@@ -1,6 +1,6 @@
 import {  useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { MoviesList } from "components/MoviesList/MoviesList";
+import MoviesList from "../components/MoviesList/MoviesList";
 import { getMovies } from "services/API";
 import { Oval } from "react-loader-spinner";
 
@@ -54,7 +54,7 @@ const MoviePage = () => {
                 <div>
                     {!isLoading ?
                     (
-              <MoviesList movies={movies} />
+                      <MoviesList movies={movies} />
                     ) : (
                       <Oval
                         height={20}

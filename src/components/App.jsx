@@ -15,12 +15,13 @@ const App = () => {
   return (      
       <Routes>
         <Route path="/" element={<Layout/>}>
-          <Route index element={<HomePage />} />
+          <Route path="home" element={<HomePage/>} />
           <Route path="movies/:movieId" element={<MovieDetailsPage />}>
             <Route path="cast" element={<Cast/>} />
             <Route path="reviews" element={<Reviews/>} />
           </Route>
           <Route path="movies" element={<MoviePage/>}/>
+          <Route path="*" element={<HomePage/>}/>
         </Route>
       </Routes>   
   );
