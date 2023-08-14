@@ -54,7 +54,7 @@ const MoviePage = () => {
                 <div>
                     {!isLoading ?
                     (
-                      <MoviesList movies={movies} />
+                      <MoviesList movies={movies}/>
                     ) : (
                       <Oval
                         height={20}
