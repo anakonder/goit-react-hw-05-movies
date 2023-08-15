@@ -32,3 +32,11 @@ p {
   padding: 0;
   margin: 0;
 }
+
+.linkBtn {
+  padding: 2px;
+  margin-bottom: 5px;
+  background-color: lightgray;
+  border: 2px solid gray;
+  width: 60px;
+}

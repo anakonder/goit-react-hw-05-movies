@@ -19,11 +19,11 @@
   font-weight: 700;
 }
 
-.navLink:hover,
+/* .navLink:hover,
 .navLink:focus {
-  color: gray;
+  color: rgb(230, 87, 87);
 }
 
 .navLink:active {
   color: rgb(230, 87, 87);
-}
+} */

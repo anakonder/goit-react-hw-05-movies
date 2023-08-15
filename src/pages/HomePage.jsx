@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MoviesList } from "components/MoviesList/MoviesList";
+import MoviesList from "../components/MoviesList/MoviesList";
 import { getMovies } from "../services/API"
 import { Oval } from  'react-loader-spinner'
 
@@ -17,15 +17,15 @@ const HomePage = () => {
         setIsLoading(false)
       }
     }
-
+    
     fetchMovies()
     
   }, [])
-
+  
   return (
     <div>
       {!isLoading ?
-        (<MoviesList movies={movies} />) : (
+        (<MoviesList movies={movies} isHomePage={true} />) : (
           <Oval
             height={20}
             width={20}

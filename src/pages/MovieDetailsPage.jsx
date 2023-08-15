@@ -29,9 +29,11 @@ const MovieDetailsPage = () => {
   
     return (
       <div>
-        <Link to={backLink}>
-                Go Back
-        </Link>
+        <div className={Styles.linkBtn }>
+          <Link  to={backLink}>
+                  Go Back
+          </Link>
+        </div>
         <div className={Styles.infoWrap}>
           {poster_path ? (
             <img

@@ -1,6 +1,6 @@
 import {  useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { MoviesList } from "components/MoviesList/MoviesList";
+import MoviesList from "../components/MoviesList/MoviesList";
 import { getMovies } from "services/API";
 import { Oval } from "react-loader-spinner";
 
@@ -9,6 +9,7 @@ const MoviePage = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
+
   
   useEffect(() => {
     const queryFromUrl = searchParams.get("query");
@@ -54,7 +55,7 @@ const MoviePage = () => {
                 <div>
                     {!isLoading ?
                     (
-              <MoviesList movies={movies} />
+              <MoviesList movies={movies} isHomePage={false} />
                     ) : (
                       <Oval
                         height={20}
