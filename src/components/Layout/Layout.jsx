@@ -16,7 +16,7 @@ const StyledLink = styled(NavLink)`
         <div className={Styles.header}>
             <ul className={Styles.nav}>
                 <li>
-                  <StyledLink className={Styles.navLink} to="/" >Home</StyledLink>
+                  <StyledLink className={Styles.navLink} to="/home" >Home</StyledLink>
                 </li>
                 <li>
                   <StyledLink className={Styles.navLink} to="/movies" >Movies</StyledLink>

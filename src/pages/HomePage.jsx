@@ -14,7 +14,7 @@ const HomePage = () => {
       const result = await getMovies(base, "")    
       if (result) {
         setMovies(result); 
-        setIsLoading(false)
+        setIsLoading(false)        
       }
     }
     
@@ -25,7 +25,9 @@ const HomePage = () => {
   return (
     <div>
       {!isLoading ?
+
         (<MoviesList movies={movies} isHomePage={true} />) : (
+
           <Oval
             height={20}
             width={20}
