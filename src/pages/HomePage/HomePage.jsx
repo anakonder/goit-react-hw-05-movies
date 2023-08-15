@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import MoviesList from "../components/MoviesList/MoviesList";
-import { getMovies } from "../services/API"
+import MoviesList from "../../components/MoviesList/MoviesList";
+import { getMovies } from "../../services/API"
 import { Oval } from  'react-loader-spinner'
 
 
