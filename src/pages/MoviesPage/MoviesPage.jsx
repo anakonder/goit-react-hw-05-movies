@@ -54,10 +54,7 @@ const MoviePage = () => {
             {movies.length > 0 && (
                 <div>
                     {!isLoading ?
-                    (
-
-              <MoviesList movies={movies} isHomePage={false} />
-
+                    (<MoviesList movies={movies} isHomePage={false} />
                     ) : (
                       <Oval
                         height={20}
@@ -70,10 +67,9 @@ const MoviePage = () => {
                         secondaryColor="#4fa94d"
                         strokeWidth={2}
                         strokeWidthSecondary={2}
-                    />
+                      />
                     )
-                    }
-                    
+                    }                    
                 </div>
             )}
       
