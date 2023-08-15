@@ -10,8 +10,7 @@ const StyledLink = styled(NavLink)`
 
   &.active {
     color: rgb(230, 87, 87);
-  }
-`;
+  }`;
     return (
         <div className={Styles.header}>
             <ul className={Styles.nav}>
@@ -28,6 +27,5 @@ const StyledLink = styled(NavLink)`
         </div>
     )
 }
-
 
 export default Layout;
