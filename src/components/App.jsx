@@ -14,7 +14,6 @@ const App = () => {
 
   return (      
       <Routes>
-
          <Route path="/" element={<Layout/>}>
            <Route index element={<HomePage />} />
            <Route path="movies" element={<MoviePage/>}/>
@@ -23,8 +22,7 @@ const App = () => {
              <Route path="reviews" element={<Reviews/>} />
            </Route>
            <Route path="*" element={<HomePage/>}/>
-         </Route>
-         <Route path="/search" element={<MoviePage />} />
+         </Route>         
       </Routes>   
   );
 };
